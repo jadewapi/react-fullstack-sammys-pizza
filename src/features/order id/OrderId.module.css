@@ -1,0 +1,137 @@
+.container {
+  height: 75.5rem;
+  background-color: var(--yellow);
+  min-width: 442px;
+}
+
+.container > div:first-child {
+  height: 15%;
+  text-align: center;
+}
+
+.container > div:first-child > img {
+  height: 100%;
+  width: auto;
+}
+
+.content {
+  height: 80%;
+  max-width: 1183px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentWrapper {
+  height: 80%;
+  width: 90%;
+  background-color: black;
+  color: var(--white);
+  padding: 2rem 4rem;
+}
+
+.contentWrapper > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--white);
+}
+
+.contentWrapper > div:first-child > p:first-child {
+  font-size: 4rem;
+}
+
+.contentWrapper > div:first-child > p:last-child {
+  font-size: 2rem;
+  padding: 0 2rem;
+  border-radius: 20px;
+  background-color: var(--orange);
+}
+
+.contentWrapper > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.contentWrapper > div:nth-child(2) > p:first-child {
+  font-size: 2rem;
+}
+
+.pizzas {
+  height: 55%;
+  background-color: var(--blue);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  overflow: scroll;
+}
+
+.pizzas > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pizzas > div > div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: scroll;
+  margin-right: 2rem;
+}
+
+.pizzas > div > div > p:first-child {
+  font-size: 2rem;
+}
+
+.pizzas > div > div > p:last-child {
+  font-size: 3rem;
+}
+
+.pizzas > div > p {
+  font-size: 3rem;
+}
+
+.contentWrapper > p {
+  font-size: 2rem;
+}
+
+@media (width < 701px) {
+  .contentWrapper > div:first-child > p:first-child {
+    font-size: 3rem;
+  }
+  .contentWrapper > div:first-child > p:last-child {
+    font-size: 1.5rem;
+  }
+  .contentWrapper > div:nth-child(2) > p:first-child {
+    font-size: 1.5rem;
+  }
+  .pizzas > div > div > p:last-child {
+    font-size: 2rem;
+  }
+  .pizzas > div > p {
+    font-size: 2rem;
+  }
+}
+
+@media (width < 515px) {
+  .contentWrapper > div:first-child {
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+  .contentWrapper > div:nth-child(2) {
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .pizzas {
+    height: 45%;
+  }
+}
+
+@media (height > 782px) {
+  .container {
+    height: 100vh;
+  }
+}
