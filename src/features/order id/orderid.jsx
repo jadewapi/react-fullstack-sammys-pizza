@@ -1,6 +1,6 @@
 import styles from "./OrderId.module.css";
 
-function orderid() {
+function OrderId() {
   return (
     <div className={styles.container}>
       <div>
@@ -39,4 +39,4 @@ function orderid() {
   );
 }
 
-export default orderid;
+export default OrderId;
