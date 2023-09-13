@@ -53,7 +53,7 @@ function Cart() {
         <p>$9.99</p>
       </section>
       <div className={styles.buttonContainer}>
-        <button>Place order!</button>
+        <Link to="/order">Place order!</Link>
       </div>
     </section>
   );

@@ -17,8 +17,16 @@
 .CART > a {
   position: absolute;
   right: 2%;
-  top: 2%;
+  top: 10%;
   fill: black;
+}
+
+.CART > a:hover {
+  fill: var(--orange);
+}
+
+.buttonContainer > a:hover {
+  border-bottom: 10apx solid black;
 }
 
 .CART > p {
@@ -86,13 +94,20 @@
   margin-top: 2rem;
 }
 
-.buttonContainer > button {
+.buttonContainer > a {
   width: 40%;
   height: 100%;
   font-size: 2rem;
   background-color: var(--orange);
   color: white;
   border-bottom: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
 }
 
 @media (width < 1156px) {

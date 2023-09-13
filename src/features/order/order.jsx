@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Order.module.css";
 
 function Order() {
@@ -8,7 +9,7 @@ function Order() {
       </div>
       <div className={styles.container}>
         <div>
-          <p>Back to menu.</p>
+          <Link>Back to menu.</Link>
           <p>One more step...</p>
           <div>
             <div>
