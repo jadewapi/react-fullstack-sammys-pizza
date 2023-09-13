@@ -2,6 +2,7 @@
   height: 75.5rem;
   background-color: var(--yellow);
   min-width: 442px;
+  max-height: 75.5rem;
 }
 
 .container > div:first-child {

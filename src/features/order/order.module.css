@@ -2,6 +2,7 @@
   height: 74.5rem;
   background-color: var(--white);
   min-width: 500px;
+  max-height: 75.5rem;
 }
 
 .orderNew > div:first-child {
@@ -24,7 +25,7 @@
   padding: 0 2rem;
 }
 
-.container > div > a:first-child {
+.container > div > p:first-child {
   font-size: 2rem;
   border-bottom: 2px solid black;
   width: fit-content;

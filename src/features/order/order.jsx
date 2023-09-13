@@ -13,7 +13,7 @@ function Order() {
       </div>
       <div className={styles.container}>
         <div>
-          <Link to={navigate(-1)}>Back to menu.</Link>
+          <p onClick={() => navigate(-1)}>Back to menu.</p>
           <p>One more step...</p>
           <div>
             <div>
