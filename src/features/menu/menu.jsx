@@ -4,15 +4,18 @@ import Logo from "../../ui/Logo";
 import { useEffect, useState } from "react";
 import { getRestaurantData } from "../../services/apiRestaurant";
 import Loading from "../../ui/Loading/Loading";
+import Pizza from "../../ui/Pizza";
 
 function Menu() {
   const [isLoading, setIsLoading] = useState(false);
+  const [menu, setMenu] = useState([]);
 
   useEffect(function () {
     async function fetchData() {
       try {
         setIsLoading(true);
         const data = await getRestaurantData();
+        setMenu(data);
         console.log(data);
       } catch (err) {
         console.log(err.message);
@@ -61,22 +64,9 @@ function Menu() {
         <p>Our Delicious Menu,</p>
       </div>
       <section className={styles.grid}>
-        <article>
-          <div>
-            <img
-              src="https://www.allrecipes.com/thmb/0xH8n2D4cC97t7mcC7eT2SDZ0aE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/6776_Pizza-Dough_ddmfs_2x1_1725-fdaa76496da045b3bdaadcec6d4c5398.jpg"
-              alt="pizza images"
-            />
-          </div>
-          <div>
-            <p>Namesdfsdfsdfdsfdsf</p>
-            <p>Ingridiendsufhs kdjhfjsdhjfdshfl sdfhsdjhfljshdfs</p>
-            <div>
-              <p>$9.98</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
+        {menu.map((obj) => (
+          <Pizza obj={obj} key={obj.id} />
+        ))}
       </section>
       <Outlet />
     </section>

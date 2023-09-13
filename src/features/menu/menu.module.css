@@ -197,7 +197,8 @@ header {
 .grid > article > div:first-child > img {
   width: 100%;
   height: auto;
-  min-height: 100%;
+  position: relative;
+  bottom: 70%;
 }
 
 .grid > article > div:last-child {

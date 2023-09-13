@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
 import img from "../../assets/homepage.png";
+import { useState } from "react";
 
 function Homepage() {
+  const [name, setName] = useState("");
   return (
     <div className={styles.homepage}>
       <div>
@@ -23,8 +25,13 @@ function Homepage() {
         <p>HI!, Welcome to my place!</p>
         <p>My crew and I makes the best pizza. Try it out ASAP.</p>
         <p>please put your name...</p>
-        <input type="text" placeholder="name..." />
-        <Link to="menu">Start ordering!</Link>
+        <input
+          type="text"
+          placeholder="name..."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        {name && <Link to="menu">Start ordering!</Link>}
         <img src={img} alt="homepage image" />
       </article>
     </div>
