@@ -1,0 +1,185 @@
+.homepage {
+  height: 10rem;
+  background-color: var(--yellow);
+  min-width: 434px;
+}
+
+.homepage > div {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7rem;
+}
+
+.homepage > div > img {
+  width: auto;
+  height: 90%;
+}
+
+.homepage > div > div {
+  width: 60%;
+  height: 40%;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.homepage > div > div > input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border-bottom: 4px solid black;
+  font-size: 2rem;
+  background-color: rgba(90, 90, 90, 0.094);
+  transition: all 0.25s ease-in;
+}
+.homepage > div > div > input::placeholder {
+  color: black;
+}
+
+.homepage > div > div > svg {
+  width: fit-content;
+}
+
+.homepage > article {
+  padding: 0 2rem;
+  border-top: 10px solid var(--orange);
+  height: 65.5rem;
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.homepage > article > p:first-child {
+  font-size: 6rem;
+  line-height: 70px;
+}
+
+.homepage > article > p:nth-child(2) {
+  font-size: 2rem;
+  margin-bottom: 7rem;
+}
+
+.homepage > article > p:nth-child(3) {
+  font-size: 2.5rem;
+}
+
+.homepage > article > input {
+  border-radius: 0;
+  width: 30%;
+  background-color: transparent;
+  border-bottom: 2px solid var(--white);
+  color: var(--white);
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.homepage > article > input::placeholder {
+  color: rgba(255, 255, 255, 0.575);
+}
+
+.homepage > article > button {
+  font-size: 2rem;
+  padding: 1rem 4rem;
+  background-color: var(--orange);
+  font-size: 3rem;
+  transition: all 0.25s ease;
+}
+
+.homepage > article > img {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  top: 40%;
+  left: 70%;
+  transform: rotate(23deg);
+}
+
+.homepage > article > button:hover {
+  color: var(--white);
+  border-bottom: 4px solid black;
+}
+
+.homepage > div > div > input:hover {
+  background-color: #ffd97a;
+}
+
+@media (width < 1062px) {
+  .homepage > article > img {
+    top: 50%;
+  }
+  .homepage > article > p:first-child {
+    font-size: 4rem;
+  }
+  .homepage > article > p:nth-child(2) {
+    font-size: 1.5rem;
+  }
+  .homepage > article > p:nth-child(3) {
+    font-size: 2.5rem;
+  }
+  .homepage > article > button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (width < 786px) {
+  .homepage > article > img {
+    top: 70%;
+  }
+  .homepage > article > p:nth-child(3) {
+    font-size: 1.75rem;
+  }
+  .homepage > article > input {
+    font-size: 2rem;
+  }
+  .homepage > article > p:first-child {
+    font-size: 3rem;
+  }
+  .homepage > article > p:nth-child(2) {
+    font-size: 1rem;
+  }
+  .homepage > article > input {
+    width: 50%;
+  }
+}
+
+@media (width < 686px) {
+  .homepage > div {
+    padding: 0 1rem;
+  }
+}
+
+@media (width < 556px) {
+  .homepage > article > img {
+    width: 60%;
+  }
+}
+
+@media (width < 506px) {
+  .homepage > div > img {
+    display: none;
+  }
+  .homepage > div > div {
+    width: 100%;
+  }
+}
+
+@media (width > 1433px) and (height > 815px) {
+  .homepage > article {
+    height: 93vh;
+  }
+}
+
+@media (width < 1434px) and (height > 815px) {
+  .homepage > article {
+    height: 93vh;
+  }
+}
