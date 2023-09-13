@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.orderNew > div:first-child > img {
+.orderNew > div:first-child > a > img {
   height: 100%;
   width: auto;
 }
@@ -24,11 +24,14 @@
   padding: 0 2rem;
 }
 
-.container > div > p:first-child {
+.container > div > a:first-child {
   font-size: 2rem;
   border-bottom: 2px solid black;
   width: fit-content;
   margin-bottom: 4rem;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 2rem;
 }
 
 .container > div {
@@ -70,13 +73,23 @@
   height: 3rem;
 }
 
-.container > div > button {
+.container > div > a:last-child {
+  display: block;
   margin-top: 4rem;
-  width: 100%;
   font-size: 3rem;
   background-color: var(--orange);
   color: white;
   border-bottom: 7px solid black;
+  text-decoration: none;
+  padding: 0 2rem;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.container > div > a:last-child:hover {
+  border-bottom: 10px solid black;
 }
 
 @media (height > 771px) {

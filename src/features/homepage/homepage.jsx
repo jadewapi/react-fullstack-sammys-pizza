@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
+import img from "../../assets/homepage.png";
 
 function Homepage() {
   return (
@@ -24,7 +25,7 @@ function Homepage() {
         <p>please put your name...</p>
         <input type="text" placeholder="name..." />
         <Link to="menu">Start ordering!</Link>
-        <img src="homepage.png" alt="homepage image" />
+        <img src={img} alt="homepage image" />
       </article>
     </div>
   );

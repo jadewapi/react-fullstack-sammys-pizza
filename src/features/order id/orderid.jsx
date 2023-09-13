@@ -1,12 +1,17 @@
 import styles from "./OrderId.module.css";
+import img from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 function OrderId() {
   return (
     <div className={styles.container}>
       <div>
-        <img src="logo.png" alt="logo" />
+        <Link to="/">
+          <img src={img} alt="logo" />
+        </Link>
       </div>
       <div className={styles.content}>
+        <Link to="/">Back to homepage</Link>
         <div className={styles.contentWrapper}>
           <div>
             <p>Order SJHUIF</p>

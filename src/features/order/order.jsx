@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Order.module.css";
+import img from "../../assets/logo.png";
 
 function Order() {
+  const navigate = useNavigate();
   return (
     <div className={styles.orderNew}>
       <div>
-        <img src="logo.png" alt="" />
+        <Link to="/">
+          <img src={img} alt="" />
+        </Link>
       </div>
       <div className={styles.container}>
         <div>
-          <Link>Back to menu.</Link>
+          <Link to={navigate(-1)}>Back to menu.</Link>
           <p>One more step...</p>
           <div>
             <div>
@@ -25,7 +29,7 @@ function Order() {
               <input type="text" placeholder="address" />
             </div>
           </div>
-          <button>Order!</button>
+          <Link to="/order/:id">Order</Link>
         </div>
       </div>
     </div>

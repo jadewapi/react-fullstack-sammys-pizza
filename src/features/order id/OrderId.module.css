@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.container > div:first-child > img {
+.container > div:first-child > a > img {
   height: 100%;
   width: auto;
 }
@@ -21,6 +21,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.content > a {
+  font-size: 2rem;
+  color: black;
 }
 
 .contentWrapper {
