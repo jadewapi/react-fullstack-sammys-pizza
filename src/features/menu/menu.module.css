@@ -6,6 +6,8 @@
 }
 
 header {
+  position: relative;
+  z-index: 5;
   box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.2);
   height: 13%;
   display: flex;
@@ -14,7 +16,6 @@ header {
   padding: 0 6rem;
   background-color: var(--yellow);
   border-bottom: 10px solid var(--orange);
-  position: relative;
 }
 
 header > * {
@@ -42,7 +43,12 @@ header > * {
   justify-content: center;
 }
 
-.imageContainer > img {
+.imageContainer > a {
+  width: auto;
+  height: 100%;
+}
+
+.imageContainer > a > img {
   width: auto;
   height: 100%;
 }
@@ -51,7 +57,8 @@ header > * {
   justify-content: end;
 }
 
-.cartContainer > div {
+.cartContainer > a {
+  text-decoration: none;
   display: flex;
   gap: 1rem;
   justify-content: end;
@@ -65,17 +72,17 @@ header > * {
   transition: all 0.25s ease;
 }
 
-.cartContainer > div:hover {
+.cartContainer > a:hover {
   border-bottom: 10px solid black;
-  color: black;
   fill: black;
+  color: black;
 }
 
-.search {
+.menu > .search {
   position: absolute;
-  height: 6rem;
   width: 30rem;
-  top: 110%;
+  top: 10%;
+  left: 40%;
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
   padding: 0 2rem;
@@ -84,9 +91,11 @@ header > * {
   display: flex;
   gap: 2rem;
   box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.2);
+  height: 7rem;
 }
 
 .search > input {
+  position: relative;
   border-radius: 0;
   height: fit-content;
   width: 80%;

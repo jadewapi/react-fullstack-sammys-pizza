@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import styles from "./Homepage.module.css";
+import Logo from "../../ui/Logo";
 
 function Homepage() {
   return (
     <div className={styles.homepage}>
       <div>
-        <img src="logo.png" alt="logo" />
+        <Logo />
         <div>
           <input type="text" placeholder="search order #" />
           <svg
@@ -21,7 +23,7 @@ function Homepage() {
         <p>My crew and I makes the best pizza. Try it out ASAP.</p>
         <p>please put your name...</p>
         <input type="text" placeholder="name..." />
-        <button>Start ordering!</button>
+        <Link to="menu">Start ordering!</Link>
         <img src="homepage.png" alt="homepage image" />
       </article>
     </div>

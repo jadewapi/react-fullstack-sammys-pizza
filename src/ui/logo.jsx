@@ -1,7 +1,7 @@
-import img from "../../public/logo.png";
+import img from "../assets/logo.png";
 
-function logo() {
+function Logo() {
   return <img src={img} alt="logo" />;
 }
 
-export default logo;
+export default Logo;
