@@ -7,9 +7,9 @@ const initialState = {
 const orderSlice = createSlice({
   name: "order",
   initialState,
-  reducer: {
+  reducers: {
     addToCart(state, action) {
-      state.cart = state.cart.push(action.payload);
+      state.cart.push(action.payload);
     },
   },
 });
