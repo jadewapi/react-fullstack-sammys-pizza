@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+:root {
+  --yellow: #f7b917;
+  --blue: #2d55a6;
+  --orange: #dd4826;
+  --white: #f1e9df;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+input,
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.trademark {
+  background-color: black;
+  text-align: center;
+  height: 3rem;
+  font-size: 2rem;
+  color: var(--yellow);
+  font-weight: 800;
+  min-width: 434px;
+}
+
+body {
+  background-color: var(--blue);
+  font-family: "Poppins", sans-serif;
+  user-select: none;
+}
