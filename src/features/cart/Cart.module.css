@@ -1,18 +1,17 @@
 .CART {
   position: absolute;
   z-index: 4;
-  top: 47.7%;
+  top: 50.7%;
   left: 75%;
-  height: 70%;
+  height: 90%;
   width: 50%;
   transform: translate(-50%, -50%);
   background-color: var(--white);
   border: 8px solid var(--orange);
   border-top: none;
   border-radius: 0 0 20px 20px;
-  padding: 1rem 2rem;
+  padding: 15rem 2rem 0 2rem;
   box-shadow: 20px 80px 100px 50px rgba(0, 0, 0, 0.306);
-  transition: all 25s ease-in;
 }
 
 .CART > a {
