@@ -1,9 +1,30 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import styles from "./Menu.module.css";
 import Logo from "../../ui/Logo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getRestaurantData } from "../../services/apiRestaurant";
+import Loading from "../../ui/Loading/Loading";
 
 function Menu() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(function () {
+    async function fetchData() {
+      try {
+        setIsLoading(true);
+        const data = await getRestaurantData();
+        console.log(data);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (isLoading) return <Loading />;
+
   return (
     <section className={styles.menu}>
       <header>
@@ -52,84 +73,6 @@ function Menu() {
             <p>Ingridiendsufhs kdjhfjsdhjfdshfl sdfhsdjhfljshdfs</p>
             <div>
               <p>$9.98</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
-              <p>Add to Cart</p>
-            </div>
-          </div>
-        </article>
-        <article>
-          <div>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <p>Name</p>
-            <p>Ingridients</p>
-            <div>
-              <p>$9.99</p>
               <p>Add to Cart</p>
             </div>
           </div>
