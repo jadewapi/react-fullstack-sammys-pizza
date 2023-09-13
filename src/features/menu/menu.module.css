@@ -164,12 +164,18 @@ header {
   overflow-y: auto;
   max-width: 1823px;
   margin: 0 auto;
+  transition: all 0.25s ease;
 }
 
 .grid > article {
   background-color: var(--white);
   border-radius: 20px;
   min-width: 33.333%;
+  transition: all 0.25s ease;
+}
+
+.grid > article:hover {
+  border-bottom: 10px solid black;
 }
 
 .grid::-webkit-scrollbar {
@@ -238,6 +244,11 @@ header {
   background-color: var(--orange);
   color: white;
   border-bottom: 4px solid black;
+  transition: all 0.25s ease;
+}
+
+.grid > article > div:last-child > div > p:last-child:hover {
+  border-bottom: 10px solid black;
 }
 
 @media (width < 1167px) {
