@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 
-function Cart() {
+function Cart({ isOpen, setIsOpen }) {
   return (
-    <section className={styles.CART}>
-      <Link to="/menu">
+    <section className={`${styles.CART} ${isOpen ? styles.opened : ""}`}>
+      <Link to="/menu" onClick={() => setIsOpen(false)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="4rem"
