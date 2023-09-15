@@ -51,6 +51,12 @@
 .orderContainer > div {
   display: flex;
   justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.orderContainer > div:hover {
+  border-left: 10px solid black;
+  padding-left: 2rem;
 }
 
 .orderContainer > div:not(:first-child) {
@@ -71,6 +77,12 @@
 
 .orderContainer > div > div > svg {
   fill: var(--orange);
+  transition: all 0.25s ease;
+}
+
+.orderContainer > div > div > svg:hover {
+  scale: 1.2;
+  fill: black;
 }
 
 .orderContainer > div > div > button {
@@ -79,6 +91,19 @@
   background-color: var(--orange);
   color: white;
   border-bottom: 6px solid black;
+  transition: all 0.25s ease;
+}
+
+.orderContainer > div > div > button:hover {
+  background-color: black;
+  border-bottom: 6px solid var(--yellow);
+  scale: 1.2;
+}
+
+.orderContainer > div > div > button:active {
+  background-color: green;
+  border-bottom: 6px solid var(--yellow);
+  scale: 1.2;
 }
 
 .CART > section {
