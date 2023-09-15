@@ -1,4 +1,10 @@
+import { Link } from "react-router-dom";
+import styles from "./MenuHeader.module.css";
+import Logo from "../Logo";
+import { useCart } from "../../hooks/contextProvider";
+
 function MenuHeader() {
+  const { setIsOpen, isOpen } = useCart();
   return (
     <header>
       <div className={styles.greetings}>

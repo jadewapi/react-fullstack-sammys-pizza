@@ -7,7 +7,7 @@ import Loading from "../../ui/Loading/Loading";
 import Pizza from "../../ui/Pizza";
 import Cart from "../cart/Cart";
 import Quantity from "../../ui/Quantity";
-import MenuHeader from "../../ui/MenuHeader";
+import MenuHeader from "../../ui/MenuHeader/MenuHeader";
 import { useCart } from "../../hooks/contextProvider";
 
 function Menu() {
@@ -17,7 +17,7 @@ function Menu() {
 
   return (
     <section className={styles.menu}>
-      {/* <MenuHeader /> */}
+      <MenuHeader />
       <div>
         <p>Our Delicious Menu,</p>
       </div>
