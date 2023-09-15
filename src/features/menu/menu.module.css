@@ -57,7 +57,7 @@ header > * {
   justify-content: end;
 }
 
-.cartContainer > a {
+.cartContainer > div {
   text-decoration: none;
   display: flex;
   gap: 1rem;
@@ -70,6 +70,10 @@ header > * {
   fill: var(--white);
   border-bottom: 4px solid black;
   transition: all 0.25s ease;
+}
+
+.cartContainer > div.cartOpen {
+  background-color: black;
 }
 
 .cartContainer > a:hover {
