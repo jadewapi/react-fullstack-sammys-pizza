@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 import Quantity from "../../ui/Quantity";
+import { useCart } from "../../hooks/contextProvider";
 
-function Cart({ isOpen, setIsOpen }) {
+function Cart() {
+  const { isOpen, setIsOpen } = useCart();
+
   return (
     <section className={`${styles.CART} ${isOpen ? styles.opened : ""}`}>
       <Link to="/menu" onClick={() => setIsOpen(false)}>

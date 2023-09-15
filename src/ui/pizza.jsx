@@ -1,4 +1,5 @@
 import { formatTotal, ingredients } from "../utils/helpers";
+import Quantity from "./Quantity";
 
 function Pizza({ obj }) {
   return (
@@ -12,6 +13,9 @@ function Pizza({ obj }) {
         <div>
           <p>{formatTotal(obj.unitPrice)}</p>
           <p>Add to Cart</p>
+          {/* <div>
+            <Quantity />
+          </div> */}
         </div>
       </div>
     </article>
