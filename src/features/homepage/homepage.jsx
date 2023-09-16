@@ -3,11 +3,12 @@ import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
 import img from "../../assets/homepage.png";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateName } from "../order/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getName, updateName } from "../order/userSlice";
 
 function Homepage() {
   const [name, setName] = useState("");
+  const userName = useSelector(getName);
   const dispatch = useDispatch();
   return (
     <div className={styles.homepage}>
@@ -27,18 +28,29 @@ function Homepage() {
       <article>
         <p>HI!, Welcome to my place!</p>
         <p>My crew and I makes the best pizza. Try it out ASAP.</p>
-        <p>please put your name...</p>
-        <input
-          type="text"
-          placeholder="name..."
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {name && (
-          <Link to="menu" onClick={() => dispatch(updateName(name))}>
-            Start ordering!
-          </Link>
+        {!userName && (
+          <>
+            <p>please put your name...</p>
+            <input
+              type="text"
+              placeholder="name..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {name && (
+              <Link to="menu" onClick={() => dispatch(updateName(name))}>
+                Start ordering!
+              </Link>
+            )}
+          </>
         )}
+        {userName && (
+          <>
+            <p>How is it so far, {userName}? Ready to order?</p>
+            <Link to="menu">Start ordering!</Link>
+          </>
+        )}
+
         <img src={img} alt="homepage image" />
       </article>
     </div>

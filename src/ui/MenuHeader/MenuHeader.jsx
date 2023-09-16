@@ -2,13 +2,22 @@ import { Link } from "react-router-dom";
 import styles from "./MenuHeader.module.css";
 import Logo from "../Logo";
 import { useCart } from "../../hooks/contextProvider";
+import { useSelector } from "react-redux";
+import { getName } from "../../features/order/userSlice";
+import { determineTimeOfDay } from "../../utils/helpers";
+import { useState } from "react";
 
 function MenuHeader() {
   const { setIsOpen, isOpen } = useCart();
+  const [search, setSearch] = useState("");
+  const name = useSelector(getName);
+  const hour = new Date().getHours();
   return (
     <header>
       <div className={styles.greetings}>
-        <p>Good evening, Jade</p>
+        <p>
+          {determineTimeOfDay(hour)}, {name}
+        </p>
       </div>
       <div className={styles.imageContainer}>
         <Link to="/">
@@ -33,12 +42,20 @@ function MenuHeader() {
         </div>
       </div>
       <div className={styles.search}>
-        <input type="text" placeholder="search order id..." />
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-          </svg>
-        </div>
+        <input
+          type="text"
+          placeholder="search order id..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{ width: `${!search ? "100%" : ""}` }}
+        />
+        {search && (
+          <div style={{ display: `${!search ? "none" : ""}` }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+            </svg>
+          </div>
+        )}
       </div>
     </header>
   );
