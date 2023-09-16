@@ -1,7 +1,7 @@
 header {
   position: relative;
   z-index: 5;
-  box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
   height: 13%;
   display: flex;
   justify-content: center;
@@ -9,6 +9,7 @@ header {
   padding: 0 6rem;
   background-color: var(--yellow);
   border-bottom: 10px solid var(--orange);
+  transition: box-shadow 1s ease;
 }
 
 header > * {
@@ -51,6 +52,7 @@ header > * {
 }
 
 .cartContainer > div {
+  position: relative;
   text-decoration: none;
   display: flex;
   gap: 1rem;
@@ -63,6 +65,16 @@ header > * {
   fill: var(--white);
   border-bottom: 4px solid black;
   transition: all 0.25s ease;
+}
+
+.cartContainer > div > span {
+  position: absolute;
+  background-color: var(--blue);
+  padding: 0 1rem;
+  border-radius: 20px;
+  font-size: 1.75rem;
+  bottom: 60%;
+  right: 90%;
 }
 
 .cartContainer > div.cartOpen {
