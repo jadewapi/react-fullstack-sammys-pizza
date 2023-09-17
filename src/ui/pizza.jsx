@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { formatTotal, ingredientsJoin } from "../utils/helpers";
 import Quantity from "./Quantity";
-import { addPizzaToCart } from "../features/cart/cartSlice";
+import { addPizzaToCart, getPizzaQuantity } from "../features/cart/cartSlice";
 import { useState } from "react";
 
 const soldOutStyling = {
@@ -10,6 +10,7 @@ const soldOutStyling = {
 };
 
 function Pizza({ obj }) {
+  const pizzaQuantity = useSelector((state) => getPizzaQuantity(obj.id)(state));
   const { id, ingredients, name, unitPrice } = obj;
   const pizzaObj = {
     id,

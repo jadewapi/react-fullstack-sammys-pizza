@@ -1,20 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [
-    // {
-    //   "id": 1,
-    //   "name": "Margherita",
-    //   "unitPrice": 12,
-    //   "imageUrl": "https://dclaevazetcjjkrzczpc.supabase.co/storage/v1/object/public/pizzas/pizza-1.jpg",
-    //   "ingredients": [
-    //   "tomato",
-    //   "mozzarella",
-    //   "basil"
-    //   ],
-    //   "soldOut": false,
-    // },
-  ],
+  cart: [],
+  // {
+  //   id,
+  //   ingredients,
+  //   name,
+  //   unitPrice,
+  //   quantity: 1,
+  //   totalPrice: unitPrice,
+  // },
 };
 
 const cartSlice = createSlice({
@@ -24,12 +19,22 @@ const cartSlice = createSlice({
     addPizzaToCart(state, action) {
       state.cart.push(action.payload);
     },
-    // increaseQuantity(state, action) {
-    //   const pizza = state.cart.find((obj) => obj.id === action.payload);
-    //   pizza.quantity
-    // },
+    increaseQuantity(state, action) {
+      const pizza = state.cart.find((obj) => obj.id === action.payload);
+      pizza.quantity++;
+      pizza.totalPrice = pizza.quantity * pizza.unitPrice;
+    },
   },
 });
+
+export function getPizzaQuantity(id) {
+  return function (state) {
+    const pizzaCount = state.cart.find((obj) => obj.id === id);
+    if (pizzaCount) {
+      return pizzaCount.quantity;
+    }
+  };
+}
 
 export const { addPizzaToCart } = cartSlice.actions;
 
