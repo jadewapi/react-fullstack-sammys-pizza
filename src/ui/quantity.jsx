@@ -1,9 +1,22 @@
-function Quantity({ setAdded }) {
+import { useDispatch, useSelector } from "react-redux";
+import { increaseQuantity, decreaseQuantity } from "../features/cart/cartSlice";
+
+function Quantity({ setAdded, id, quantity }) {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <button>-</button>
-      <p>2</p>
-      <button>+</button>
+      <button
+        onClick={() => {
+          if (quantity > 0) {
+            dispatch(decreaseQuantity(id));
+          }
+        }}
+      >
+        -
+      </button>
+      <p>{quantity}</p>
+      <button onClick={() => dispatch(increaseQuantity(id))}>+</button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="3rem"
