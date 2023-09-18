@@ -3,12 +3,9 @@ import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
 import img from "../../assets/homepage.png";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateName } from "../order/userSlice";
 
 function Homepage() {
   const [name, setName] = useState("");
-  const dispatch = useDispatch();
   return (
     <div className={styles.homepage}>
       <div>
@@ -34,11 +31,7 @@ function Homepage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        {name && (
-          <Link to="menu" onClick={() => dispatch(updateName(name))}>
-            Start ordering!
-          </Link>
-        )}
+        {name && <Link to="menu">Start ordering!</Link>}
         <img src={img} alt="homepage image" />
       </article>
     </div>
