@@ -29,7 +29,7 @@ const cartSlice = createSlice({
     increaseQuantity(state, action) {
       const pizza = state.cartArray.find((obj) => obj.id === action.payload);
       pizza.quantity++;
-      pizza.totalPrice = pizza.quantity * pizza.quantity;
+      pizza.totalPrice = pizza.quantity * pizza.unitPrice;
     },
     decreaseQuantity(state, action) {
       const index = state.cartArray.findIndex(
@@ -48,6 +48,16 @@ export function getQuantity(id) {
   return function (state) {
     const pizza = state.cart.cartArray.find((obj) => obj.id === id);
     return pizza ? pizza.quantity : 0;
+  };
+}
+
+export function getTotalPizzas() {
+  return function (state) {
+    const total = state.cart.cartArray.reduce(
+      (acc, curr) => acc + curr.quantity,
+      0
+    );
+    return total;
   };
 }
 

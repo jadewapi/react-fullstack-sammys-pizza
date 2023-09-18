@@ -11,7 +11,7 @@ const soldOutStyling = {
 
 function Pizza({ obj }) {
   const [isAdded, setIsAdded] = useState(false);
-  const { imageUrl, soldout, name, ingredients, unitPrice, id } = obj;
+  const { imageUrl, soldOut, name, ingredients, unitPrice, id } = obj;
   const newObject = {
     id,
     name,
@@ -21,7 +21,7 @@ function Pizza({ obj }) {
     quantity: 1,
   };
   const dispatch = useDispatch();
-  const quantity = useSelector((state) => getQuantity(id)(state));
+  const quantity = useSelector(getQuantity(id));
   useEffect(
     function () {
       if (quantity === 0) setIsAdded(false);
@@ -38,8 +38,8 @@ function Pizza({ obj }) {
         <p>Ingredients: {ingredientsJoin(ingredients)}</p>
         <div>
           <p>{formatTotal(unitPrice)}</p>
-          {soldout && <span>Soldout</span>}
-          {!soldout && !isAdded && (
+          {soldOut && <span>Soldout</span>}
+          {!soldOut && !isAdded && (
             <p
               onClick={() => {
                 setIsAdded(true);
@@ -49,7 +49,7 @@ function Pizza({ obj }) {
               Add to Cart
             </p>
           )}
-          {isAdded && !soldout && (
+          {isAdded && !soldOut && (
             <div>
               <Quantity setIsAdded={setIsAdded} id={id} quantity={quantity} />
             </div>
