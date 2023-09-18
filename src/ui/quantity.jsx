@@ -1,7 +1,7 @@
 function Quantity() {
   return (
     <>
-      <button>+</button>
+      <button>-</button>
       <p>2</p>
       <button>+</button>
       <svg
