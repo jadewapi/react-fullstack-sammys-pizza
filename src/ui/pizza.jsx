@@ -11,7 +11,7 @@ const soldOutStyling = {
 };
 
 function Pizza({ obj }) {
-  const { isAdded, setIsAdded } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
   const { imageUrl, soldOut, name, ingredients, unitPrice, id } = obj;
   const newObject = {
     id,
