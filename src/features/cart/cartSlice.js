@@ -44,6 +44,19 @@ const cartSlice = createSlice({
   },
 });
 
+export function getSpecificPizzaTotal(id) {
+  return function (state) {
+    const pizza = state.cart.cartArray.find((obj) => obj.id === id);
+    return pizza.totalPrice;
+  };
+}
+
+export function getCart() {
+  return function (state) {
+    return state.cart.cartArray;
+  };
+}
+
 export function getQuantity(id) {
   return function (state) {
     const pizza = state.cart.cartArray.find((obj) => obj.id === id);

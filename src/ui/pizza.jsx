@@ -3,6 +3,7 @@ import { formatTotal, ingredientsJoin } from "../utils/helpers";
 import Quantity from "./Quantity";
 import { useDispatch, useSelector } from "react-redux";
 import { addPizza, getQuantity } from "../features/cart/cartSlice";
+import { useCart } from "../hooks/contextProvider";
 
 const soldOutStyling = {
   filter: "grayscale(1)",
@@ -10,7 +11,7 @@ const soldOutStyling = {
 };
 
 function Pizza({ obj }) {
-  const [isAdded, setIsAdded] = useState(false);
+  const { isAdded, setIsAdded } = useCart();
   const { imageUrl, soldOut, name, ingredients, unitPrice, id } = obj;
   const newObject = {
     id,

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
-import Quantity from "../../ui/Quantity";
 import { useCart } from "../../hooks/contextProvider";
+import { useSelector } from "react-redux";
+import { getCart } from "./cartSlice";
+import SpecificPizzaCart from "./SpecificPizzaCart";
 
 function Cart() {
   const { isOpen, setIsOpen } = useCart();
-
+  const cart = useSelector(getCart());
   return (
     <section className={`${styles.CART} ${isOpen ? styles.opened : ""}`}>
       <Link to="/menu" onClick={() => setIsOpen(false)}>
@@ -19,13 +21,9 @@ function Cart() {
       </Link>
       <p>Your order,</p>
       <div className={styles.orderContainer}>
-        <div>
-          <p>pizdksfjsdkjlflsdkjfklsdjfjdsfhljsdhfljksdhfjkza name</p>
-          <div>
-            <p>$9.99</p>
-            <Quantity />
-          </div>
-        </div>
+        {cart.map((obj) => (
+          <SpecificPizzaCart key={obj.id} obj={obj} />
+        ))}
       </div>
       <section>
         <p>total</p>

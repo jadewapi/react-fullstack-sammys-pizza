@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   decreaseQuantity,
   deletePizza,
-  getQuantity,
   increaseQuantity,
 } from "../features/cart/cartSlice";
 

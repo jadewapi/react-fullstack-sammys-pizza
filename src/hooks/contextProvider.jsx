@@ -7,6 +7,7 @@ export default function CartProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [menu, setMenu] = useState([]);
+  const [isAdded, setIsAdded] = useState(false);
   useEffect(function () {
     async function fetchData() {
       try {
@@ -22,7 +23,16 @@ export default function CartProvider({ children }) {
     }
     fetchData();
   }, []);
-  const values = { isOpen, setIsOpen, isLoading, setIsLoading, menu, setMenu };
+  const values = {
+    isOpen,
+    setIsOpen,
+    isLoading,
+    setIsLoading,
+    menu,
+    setMenu,
+    isAdded,
+    setIsAdded,
+  };
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 }
 
