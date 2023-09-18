@@ -1,4 +1,4 @@
-export function ingredients(arr) {
+export function ingredientsJoin(arr) {
   return arr.join(", ");
 }
 

@@ -1,5 +1,8 @@
-import { formatTotal, ingredients } from "../utils/helpers";
+import { useState } from "react";
+import { formatTotal, ingredientsJoin } from "../utils/helpers";
 import Quantity from "./Quantity";
+import { useDispatch } from "react-redux";
+import { addPizza } from "../features/cart/cartSlice";
 
 const soldOutStyling = {
   filter: "grayscale(1)",
@@ -7,21 +10,43 @@ const soldOutStyling = {
 };
 
 function Pizza({ obj }) {
+  const [isAdded, setIsAdded] = useState(false);
+  const { imageUrl, soldout, name, ingredients, unitPrice, id } = obj;
+  const newObject = {
+    id,
+    name,
+    ingredients,
+    unitPrice,
+    totalPrice: unitPrice,
+    quantity: 1,
+  };
+  const dispatch = useDispatch();
   return (
     <article style={obj.soldOut ? soldOutStyling : {}}>
       <div>
-        <img src={obj.imageUrl} alt={obj.name} />
+        <img src={imageUrl} alt={name} />
       </div>
       <div>
-        <p>{obj.name}</p>
-        <p>Ingredients: {ingredients(obj.ingredients)}</p>
+        <p>{name}</p>
+        <p>Ingredients: {ingredientsJoin(ingredients)}</p>
         <div>
-          <p>{formatTotal(obj.unitPrice)}</p>
-          {obj.soldOut && <span>Soldout</span>}
-          {!obj.soldOut && <p>Add to Cart</p>}
-          {/* <div>
-            <Quantity />
-          </div> */}
+          <p>{formatTotal(unitPrice)}</p>
+          {soldout && <span>Soldout</span>}
+          {!soldout && !isAdded && (
+            <p
+              onClick={() => {
+                setIsAdded(true);
+                dispatch(addPizza(newObject));
+              }}
+            >
+              Add to Cart
+            </p>
+          )}
+          {isAdded && !soldout && (
+            <div>
+              <Quantity setIsAdded={setIsAdded} id={id} />
+            </div>
+          )}
         </div>
       </div>
     </article>
