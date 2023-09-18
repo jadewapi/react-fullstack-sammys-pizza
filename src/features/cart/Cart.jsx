@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./Cart.module.css";
 import { useCart } from "../../hooks/contextProvider";
-import { useSelector } from "react-redux";
-import { getCart, getTotalOfAllPizas } from "./cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, getCart, getTotalOfAllPizas } from "./cartSlice";
 import SpecificPizzaCart from "../../ui/SpecificPizzaCart";
 import { formatTotal } from "../../utils/helpers";
 
 function Cart() {
+  const dispatch = useDispatch();
   const { isOpen, setIsOpen } = useCart();
   const cart = useSelector(getCart());
   const total = useSelector(getTotalOfAllPizas());
@@ -33,7 +34,7 @@ function Cart() {
       </section>
       <div className={styles.buttonContainer}>
         <Link to="/order">Place order!</Link>
-        <p>Clear cart</p>
+        <p onClick={() => dispatch(clearCart())}>Clear cart</p>
       </div>
     </section>
   );

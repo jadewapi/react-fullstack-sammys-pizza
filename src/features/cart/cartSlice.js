@@ -41,6 +41,9 @@ const cartSlice = createSlice({
       if (state.cartArray[index].quantity === 0)
         state.cartArray.splice(index, 1);
     },
+    clearCart(state) {
+      state.cartArray = [];
+    },
   },
 });
 
@@ -80,7 +83,12 @@ export function getTotalOfAllPizas() {
   };
 }
 
-export const { addPizza, deletePizza, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  addPizza,
+  deletePizza,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

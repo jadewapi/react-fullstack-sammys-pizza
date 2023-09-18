@@ -4,14 +4,16 @@ import Logo from "../Logo";
 import { useCart } from "../../hooks/contextProvider";
 import { useSelector } from "react-redux";
 import { getTotalNumPizzas } from "../../features/cart/cartSlice";
+import { getName } from "../../features/order/userSlice";
 
 function MenuHeader() {
   const { setIsOpen, isOpen } = useCart();
   const total = useSelector(getTotalNumPizzas());
+  const name = useSelector(getName());
   return (
     <header>
       <div className={styles.greetings}>
-        <p>Good evening, Jade</p>
+        <p>Good evening, {name}</p>
       </div>
       <div className={styles.imageContainer}>
         <Link to="/">

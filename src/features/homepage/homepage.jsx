@@ -3,9 +3,13 @@ import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
 import img from "../../assets/homepage.png";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addName, getName } from "../order/userSlice";
 
 function Homepage() {
   const [name, setName] = useState("");
+  const dispatch = useDispatch();
+  const userName = useSelector(getName());
   return (
     <div className={styles.homepage}>
       <div>
@@ -23,15 +27,36 @@ function Homepage() {
       </div>
       <article>
         <p>HI!, Welcome to my place!</p>
-        <p>My crew and I makes the best pizza. Try it out ASAP.</p>
-        <p>please put your name...</p>
-        <input
-          type="text"
-          placeholder="name..."
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {name && <Link to="menu">Start ordering!</Link>}
+        <p>My crew and I make the best pizza. Try it out ASAP.</p>
+        <p>
+          {userName
+            ? `Ready to order, ${userName}? Let's go!`
+            : "Please put your name..."}
+        </p>
+        {!userName ? (
+          <>
+            <input
+              type="text"
+              placeholder="name..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Link
+              to="menu"
+              onClick={() => dispatch(addName(name))}
+              style={{ display: name || userName ? "inline" : "none" }}
+            >
+              Start ordering!
+            </Link>
+          </>
+        ) : (
+          <Link
+            to="menu"
+            style={{ display: name || userName ? "inline" : "none" }}
+          >
+            Start ordering!
+          </Link>
+        )}
         <img src={img} alt="homepage image" />
       </article>
     </div>
