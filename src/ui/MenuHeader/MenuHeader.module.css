@@ -110,6 +110,7 @@ header > * {
   font-size: 2rem;
   border-bottom: 2px solid black;
   background-color: var(--white);
+  transition: all 0.25s ease;
 }
 
 .search > div {

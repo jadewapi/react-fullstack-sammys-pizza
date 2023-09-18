@@ -11,6 +11,7 @@ function Cart() {
   const { isOpen, setIsOpen } = useCart();
   const cart = useSelector(getCart());
   const total = useSelector(getTotalOfAllPizas());
+  //
   return (
     <section className={`${styles.CART} ${isOpen ? styles.opened : ""}`}>
       <Link to="/menu" onClick={() => setIsOpen(false)}>
@@ -19,7 +20,7 @@ function Cart() {
           height="4rem"
           viewBox="0 0 512 512"
         >
-          <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+          <path d="M256 512A256 256 0 1 0 256 `0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
         </svg>
       </Link>
       <p>Your order,</p>
@@ -33,7 +34,7 @@ function Cart() {
         <p>{formatTotal(total)}</p>
       </section>
       <div className={styles.buttonContainer}>
-        <Link to="/order">Place order!</Link>
+        {total !== 0 && <Link to="/order">Place order!</Link>}
         <p onClick={() => dispatch(clearCart())}>Clear cart</p>
       </div>
     </section>

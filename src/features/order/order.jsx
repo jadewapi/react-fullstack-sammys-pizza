@@ -1,9 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Order.module.css";
 import img from "../../assets/logo.png";
+import { useSelector } from "react-redux";
+import { getName } from "./userSlice";
 
 function Order() {
   const navigate = useNavigate();
+  const name = useSelector(getName());
   return (
     <div className={styles.orderNew}>
       <div>
@@ -18,7 +21,7 @@ function Order() {
           <div>
             <div>
               <p>First name:</p>
-              <input type="text" placeholder="first name" />
+              <input type="text" placeholder="first name" defaultValue={name} />
             </div>
             <div>
               <p>Phone Number:</p>
