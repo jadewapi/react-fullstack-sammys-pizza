@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatTotal, ingredientsJoin } from "../utils/helpers";
 import Quantity from "./Quantity";
-import { useDispatch } from "react-redux";
-import { addPizza } from "../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addPizza, getQuantity } from "../features/cart/cartSlice";
 
 const soldOutStyling = {
   filter: "grayscale(1)",
@@ -21,6 +21,13 @@ function Pizza({ obj }) {
     quantity: 1,
   };
   const dispatch = useDispatch();
+  const quantity = useSelector((state) => getQuantity(id)(state));
+  useEffect(
+    function () {
+      if (quantity === 0) setIsAdded(false);
+    },
+    [quantity]
+  );
   return (
     <article style={obj.soldOut ? soldOutStyling : {}}>
       <div>
@@ -44,7 +51,7 @@ function Pizza({ obj }) {
           )}
           {isAdded && !soldout && (
             <div>
-              <Quantity setIsAdded={setIsAdded} id={id} />
+              <Quantity setIsAdded={setIsAdded} id={id} quantity={quantity} />
             </div>
           )}
         </div>
