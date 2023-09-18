@@ -3,11 +3,11 @@ import styles from "./MenuHeader.module.css";
 import Logo from "../Logo";
 import { useCart } from "../../hooks/contextProvider";
 import { useSelector } from "react-redux";
-import { getTotalPizzas } from "../../features/cart/cartSlice";
+import { getTotalNumPizzas } from "../../features/cart/cartSlice";
 
 function MenuHeader() {
   const { setIsOpen, isOpen } = useCart();
-  const total = useSelector(getTotalPizzas());
+  const total = useSelector(getTotalNumPizzas());
   return (
     <header>
       <div className={styles.greetings}>

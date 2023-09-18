@@ -30,6 +30,21 @@
   fill: var(--orange);
 }
 
+.buttonContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+.buttonContainer > p {
+  font-size: 2rem;
+  border-bottom: 6px solid black;
+  transition: all 0.25s ease;
+}
+
+.buttonContainer > p:hover {
+  padding: 0 4rem;
+}
+
 .buttonContainer > a:hover {
   border-bottom: 10px solid black;
 }

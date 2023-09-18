@@ -3,7 +3,6 @@ import { formatTotal, ingredientsJoin } from "../utils/helpers";
 import Quantity from "./Quantity";
 import { useDispatch, useSelector } from "react-redux";
 import { addPizza, getQuantity } from "../features/cart/cartSlice";
-import { useCart } from "../hooks/contextProvider";
 
 const soldOutStyling = {
   filter: "grayscale(1)",
@@ -23,7 +22,7 @@ function Pizza({ obj }) {
   };
   const dispatch = useDispatch();
   const quantity = useSelector(getQuantity(id));
-  // so that way we dont have to share isAdded state to specificPizzaCart.
+  // so that way we dont have to share isAdded state to every single component that uses quantity component.
   useEffect(
     function () {
       if (quantity === 0) setIsAdded(false);
@@ -53,12 +52,7 @@ function Pizza({ obj }) {
           )}
           {isAdded && !soldOut && (
             <div>
-              <Quantity
-                setIsAdded={setIsAdded}
-                id={id}
-                quantity={quantity}
-                cartOverview={false}
-              />
+              <Quantity id={id} quantity={quantity} />
             </div>
           )}
         </div>

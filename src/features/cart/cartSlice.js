@@ -64,13 +64,19 @@ export function getQuantity(id) {
   };
 }
 
-export function getTotalPizzas() {
+export function getTotalNumPizzas() {
   return function (state) {
     const total = state.cart.cartArray.reduce(
       (acc, curr) => acc + curr.quantity,
       0
     );
     return total;
+  };
+}
+
+export function getTotalOfAllPizas() {
+  return function (state) {
+    return state.cart.cartArray.reduce((acc, curr) => acc + curr.totalPrice, 0);
   };
 }
 
