@@ -23,6 +23,7 @@ function Pizza({ obj }) {
   };
   const dispatch = useDispatch();
   const quantity = useSelector(getQuantity(id));
+  // so that way we dont have to share isAdded state to specificPizzaCart.
   useEffect(
     function () {
       if (quantity === 0) setIsAdded(false);
@@ -52,7 +53,12 @@ function Pizza({ obj }) {
           )}
           {isAdded && !soldOut && (
             <div>
-              <Quantity setIsAdded={setIsAdded} id={id} quantity={quantity} />
+              <Quantity
+                setIsAdded={setIsAdded}
+                id={id}
+                quantity={quantity}
+                cartOverview={false}
+              />
             </div>
           )}
         </div>

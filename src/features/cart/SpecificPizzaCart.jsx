@@ -13,7 +13,12 @@ function SpecificPizzaCart({ obj }) {
       <p>{obj.name}</p>
       <div>
         <p>{formatTotal(thisPizzasTotal)}</p>
-        <Quantity id={id} quantity={quantity} setIsAdded={setIsAdded} />
+        <Quantity
+          id={id}
+          quantity={quantity}
+          setIsAdded={setIsAdded}
+          cartOverview={true}
+        />
       </div>
     </div>
   );

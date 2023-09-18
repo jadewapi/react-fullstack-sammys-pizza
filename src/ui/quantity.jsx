@@ -5,7 +5,7 @@ import {
   increaseQuantity,
 } from "../features/cart/cartSlice";
 
-function Quantity({ setIsAdded, id, quantity }) {
+function Quantity({ setIsAdded, id, quantity, cartOverview }) {
   const dispatch = useDispatch();
   return (
     <>
@@ -17,7 +17,9 @@ function Quantity({ setIsAdded, id, quantity }) {
         height="3rem"
         viewBox="0 0 448 512"
         onClick={() => {
-          setIsAdded(false);
+          if (!cartOverview) {
+            setIsAdded(false);
+          }
           dispatch(deletePizza(id));
         }}
       >
