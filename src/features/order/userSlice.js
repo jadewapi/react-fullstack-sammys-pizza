@@ -13,12 +13,30 @@ const userSlice = createSlice({
     addName(state, action) {
       state.name = action.payload;
     },
+    addPhone(state, action) {
+      state.phone = action.payload;
+    },
+    addAddress(state, action) {
+      state.address = action.payload;
+    },
   },
 });
 
 export function getName() {
   return function (state) {
     return state.user.name;
+  };
+}
+
+export function getPhone() {
+  return function (state) {
+    return state.user.phone;
+  };
+}
+
+export function getAddress() {
+  return function (state) {
+    return state.user.address;
   };
 }
 
