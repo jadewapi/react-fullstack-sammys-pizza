@@ -44,28 +44,28 @@
   margin-bottom: 2rem;
 }
 
-.container > div > div {
+.container > div > form {
   padding: 2rem;
   font-size: 2rem;
   background-color: white;
   justify-content: center;
 }
 
-.container > div > div > div {
+.container > div > form > div {
   display: flex;
   gap: 3rem;
   margin-bottom: 4rem;
 }
 
-.container > div > div > div:last-child {
+.container > div > form > div:last-child {
   margin-bottom: 1rem;
 }
 
-.container > div > div > div > p {
+.container > div > form > div > p {
   width: 20rem;
 }
 
-.container > div > div > div > input {
+.container > div > form > div > input {
   font-size: 2rem;
   background-color: transparent;
   border-bottom: 2px solid black;
@@ -74,7 +74,16 @@
   height: 3rem;
 }
 
-.container > div > a:last-child {
+.container > div > form > div > input[type="number"]::-webkit-inner-spin-button,
+.container
+  > div
+  > form
+  > div
+  > input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.container > div > form > button {
   display: block;
   margin-top: 4rem;
   font-size: 3rem;
@@ -89,7 +98,7 @@
   transition: all 0.25s ease;
 }
 
-.container > div > a:last-child:hover {
+.container > div > form > button:hover {
   border-bottom: 10px solid black;
 }
 
