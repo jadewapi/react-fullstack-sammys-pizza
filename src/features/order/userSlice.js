@@ -4,6 +4,7 @@ const initialState = {
   name: "",
   phone: "",
   address: "",
+  cart: [],
 };
 
 const userSlice = createSlice({
@@ -18,6 +19,9 @@ const userSlice = createSlice({
     },
     addAddress(state, action) {
       state.address = action.payload;
+    },
+    addCart(state, action) {
+      state.cart = action.payload;
     },
   },
 });
@@ -40,6 +44,6 @@ export function getAddress() {
   };
 }
 
-export const { addName } = userSlice.actions;
+export const { addName, addPhone, addAddress, addCart } = userSlice.actions;
 
 export default userSlice.reducer;

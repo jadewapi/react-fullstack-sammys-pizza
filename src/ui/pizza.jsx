@@ -11,9 +11,9 @@ const soldOutStyling = {
 
 function Pizza({ obj }) {
   const [isAdded, setIsAdded] = useState(false);
-  const { imageUrl, soldOut, name, ingredients, unitPrice, id } = obj;
+  const { imageUrl, soldOut, name, ingredients, unitPrice, id: pizzaId } = obj;
   const newObject = {
-    id,
+    pizzaId,
     name,
     ingredients,
     unitPrice,
@@ -21,7 +21,7 @@ function Pizza({ obj }) {
     quantity: 1,
   };
   const dispatch = useDispatch();
-  const quantity = useSelector(getQuantity(id));
+  const quantity = useSelector(getQuantity(pizzaId));
   // so that way we dont have to share isAdded state to every single component that uses quantity component.
   useEffect(
     function () {
@@ -35,7 +35,9 @@ function Pizza({ obj }) {
         <img src={imageUrl} alt={name} />
       </div>
       <div>
-        <p>{name}</p>
+        <p>
+          {name} {pizzaId}
+        </p>
         <p>Ingredients: {ingredientsJoin(ingredients)}</p>
         <div>
           <p>{formatTotal(unitPrice)}</p>
@@ -52,7 +54,7 @@ function Pizza({ obj }) {
           )}
           {isAdded && !soldOut && (
             <div>
-              <Quantity id={id} quantity={quantity} />
+              <Quantity id={pizzaId} quantity={quantity} />
             </div>
           )}
         </div>
