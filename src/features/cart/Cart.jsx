@@ -27,7 +27,7 @@ function Cart() {
       <div className={styles.orderContainer}>
         {cart.length === 0 && <p>No orders.</p>}
         {cart.map((obj) => (
-          <SpecificPizzaCart key={obj.id} obj={obj} />
+          <SpecificPizzaCart key={obj.pizzaId} obj={obj} />
         ))}
       </div>
       <section>

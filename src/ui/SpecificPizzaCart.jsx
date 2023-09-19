@@ -6,14 +6,14 @@ import { useCart } from "../hooks/contextProvider";
 
 function SpecificPizzaCart({ obj }) {
   const { setIsAdded } = useCart();
-  const { id, quantity } = obj;
-  const thisPizzasTotal = useSelector(getSpecificPizzaTotal(id));
+  const { pizzaId, quantity } = obj;
+  const thisPizzasTotal = useSelector(getSpecificPizzaTotal(pizzaId));
   return (
     <div>
       <p>{obj.name}</p>
       <div>
         <p>{formatTotal(thisPizzasTotal)}</p>
-        <Quantity id={id} quantity={quantity} setIsAdded={setIsAdded} />
+        <Quantity id={pizzaId} quantity={quantity} setIsAdded={setIsAdded} />
       </div>
     </div>
   );
