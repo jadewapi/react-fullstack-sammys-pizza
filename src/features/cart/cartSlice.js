@@ -20,22 +20,20 @@ const cartSlice = createSlice({
     },
     deletePizza(state, action) {
       const pizza = state.cartArray.findIndex(
-        (obj) => obj.pizzaId === action.payload
+        (obj) => obj.id === action.payload
       );
       if (pizza !== -1) {
         state.cartArray.splice(pizza, 1);
       }
     },
     increaseQuantity(state, action) {
-      const pizza = state.cartArray.find(
-        (obj) => obj.pizzaId === action.payload
-      );
+      const pizza = state.cartArray.find((obj) => obj.id === action.payload);
       pizza.quantity++;
       pizza.totalPrice = pizza.quantity * pizza.unitPrice;
     },
     decreaseQuantity(state, action) {
       const index = state.cartArray.findIndex(
-        (obj) => obj.pizzaId === action.payload
+        (obj) => obj.id === action.payload
       );
       state.cartArray[index].quantity--;
       state.cartArray[index].totalPrice =
@@ -51,7 +49,7 @@ const cartSlice = createSlice({
 
 export function getSpecificPizzaTotal(id) {
   return function (state) {
-    const pizza = state.cart.cartArray.find((obj) => obj.pizzaId === id);
+    const pizza = state.cart.cartArray.find((obj) => obj.id === id);
     return pizza.totalPrice;
   };
 }
@@ -64,7 +62,7 @@ export function getCart() {
 
 export function getQuantity(id) {
   return function (state) {
-    const pizza = state.cart.cartArray.find((obj) => obj.pizzaId === id);
+    const pizza = state.cart.cartArray.find((obj) => obj.id === id);
     return pizza ? pizza.quantity : 0;
   };
 }

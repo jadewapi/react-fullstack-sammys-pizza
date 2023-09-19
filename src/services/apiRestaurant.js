@@ -15,18 +15,10 @@ export async function createOrder(newOrder) {
         "Content-Type": "application/json",
       },
     });
-
-    if (!res.ok) {
-      const errorDetail = await res.text(); // Get additional error details
-      throw Error(
-        `Failed to create order. Status: ${res.status}, Detail: ${errorDetail}`
-      );
-    }
-
-    const data = await res.json();
+    if (!res.ok) throw Error();
+    const { data } = await res.json();
     return data;
-  } catch (error) {
-    console.error(error);
-    throw error;
+  } catch {
+    throw Error("Failed creating your order");
   }
 }

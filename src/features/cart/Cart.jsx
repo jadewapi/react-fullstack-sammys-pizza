@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalOfAllPizas } from "./cartSlice";
 import SpecificPizzaCart from "../../ui/SpecificPizzaCart";
 import { formatTotal } from "../../utils/helpers";
-import { addCart } from "../order/userSlice";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ function Cart() {
       <div className={styles.orderContainer}>
         {cart.length === 0 && <p>No orders.</p>}
         {cart.map((obj) => (
-          <SpecificPizzaCart key={obj.pizzaId} obj={obj} />
+          <SpecificPizzaCart key={obj.id} obj={obj} />
         ))}
       </div>
       <section>
@@ -36,11 +35,7 @@ function Cart() {
         <p>{formatTotal(total)}</p>
       </section>
       <div className={styles.buttonContainer}>
-        {total !== 0 && (
-          <Link to="/order" onClick={() => dispatch(addCart(cart))}>
-            Place order!
-          </Link>
-        )}
+        {total !== 0 && <Link to="/order">Place order!</Link>}
         <p onClick={() => dispatch(clearCart())}>Clear cart</p>
       </div>
     </section>
