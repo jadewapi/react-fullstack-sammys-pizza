@@ -26,6 +26,15 @@
   align-items: center;
 }
 
+.homepage > div > div > svg {
+  transition: all 0.5s ease;
+}
+
+.homepage > div > div > svg:hover {
+  fill: white;
+  scale: 1.5;
+}
+
 .homepage > div > div > input {
   height: 100%;
   width: 100%;

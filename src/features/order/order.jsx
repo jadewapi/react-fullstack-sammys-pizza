@@ -18,16 +18,22 @@ function Order() {
   const [address, setAddress] = useState("");
   async function handleSubmit(e) {
     e.preventDefault();
-    const object = {
-      address: address,
-      cart: cart,
-      customer: !changeName ? name : changeName,
-      phone: phone,
-    };
-    const order = await createOrder(object);
-    dispatch(clearCart());
-    dispatch(clearEverything());
-    navigate(`/order/${order.id}`);
+    if (cart.length === 0) {
+      alert("YOU HAVENT ORDERED YET 🤣");
+      navigate("/");
+    }
+    if (cart) {
+      const object = {
+        address: address,
+        cart: cart,
+        customer: !changeName ? name : changeName,
+        phone: phone,
+      };
+      const order = await createOrder(object);
+      dispatch(clearCart());
+      dispatch(clearEverything());
+      navigate(`/order/${order.id}`);
+    }
   }
   useEffect(function () {
     focus.current.focus();
