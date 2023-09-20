@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Homepage.module.css";
 import Logo from "../../ui/Logo";
 import img from "../../assets/homepage.png";
@@ -10,13 +10,21 @@ function Homepage() {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const userName = useSelector(getName());
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   return (
     <div className={styles.homepage}>
       <div>
         <Logo />
         <div>
-          <input type="text" placeholder="search order #" />
+          <input
+            type="text"
+            placeholder="search order #"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <svg
+            onClick={() => navigate(`/order/${search}`)}
             xmlns="http://www.w3.org/2000/svg"
             height="3rem"
             viewBox="0 0 448 512"

@@ -3,6 +3,7 @@
   background-color: var(--yellow);
   min-width: 442px;
   max-height: 75.5rem;
+  user-select: text;
 }
 
 .container > div:first-child {

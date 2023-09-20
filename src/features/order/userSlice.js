@@ -13,11 +13,10 @@ const userSlice = createSlice({
     addName(state, action) {
       state.name = action.payload;
     },
-    addPhone(state, action) {
-      state.phone = action.payload;
-    },
-    addAddress(state, action) {
-      state.address = action.payload;
+    clearEverything(state) {
+      state.name = "";
+      state.phone = "";
+      state.address = "";
     },
   },
 });
@@ -40,6 +39,6 @@ export function getAddress() {
   };
 }
 
-export const { addName } = userSlice.actions;
+export const { addName, clearEverything } = userSlice.actions;
 
 export default userSlice.reducer;
