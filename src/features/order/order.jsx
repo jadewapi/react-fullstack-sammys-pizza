@@ -21,6 +21,7 @@ function Order() {
       phone: "3232323",
     };
     const order = await createOrder(object);
+    console.log(order);
     navigate(`/order/${order.id}`);
   }
   useEffect(function () {
