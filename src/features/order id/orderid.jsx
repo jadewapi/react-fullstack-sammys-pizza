@@ -4,13 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getOrder } from "../../services/apiRestaurant";
 import Loading from "../../ui/Loading/Loading";
-import { calcMinutesLeft } from "../../utils/helpers";
+import { calcMinutesLeft, formatDate, formatTotal } from "../../utils/helpers";
+import Error from "../../ui/Error/Error";
 
 function OrderId() {
   const { id } = useParams();
   const [orderData, setOrderData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const {
+    customer,
     status,
     priority,
     priorityPrice,
@@ -18,32 +20,32 @@ function OrderId() {
     estimatedDelivery,
     cart,
   } = orderData;
-  useEffect(
-    function () {
-      async function getOrderData() {
-        try {
-          setIsLoading(true);
-          const data = await getOrder(id);
-          setOrderData(data);
-          console.log(data);
-        } catch (err) {
-          console.log(err.message);
-        } finally {
-          setIsLoading(false);
-        }
+  useEffect(function () {
+    async function getOrderData() {
+      try {
+        setIsLoading(true);
+        const data = await getOrder(id);
+        setOrderData(data);
+        console.log(data);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setIsLoading(false);
       }
-      getOrderData();
-    },
-    [id]
-  );
-  const deliveredIn = calcMinutesLeft(estimatedDelivery);
-  console.log(deliveredIn);
+    }
+    getOrderData();
+  }, []);
 
+  const deliveredIn = calcMinutesLeft(estimatedDelivery);
+  const style = deliveredIn < 0 ? { backgroundColor: "green" } : {};
   if (isLoading) {
     return <Loading />;
   }
+  if (!orderData) {
+    return <Error />;
+  }
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={style}>
       <div>
         <Link to="/">
           <img src={img} alt="logo" />
@@ -54,35 +56,37 @@ function OrderId() {
         <div className={styles.contentWrapper}>
           <div>
             <p>Order {id}</p>
-            <p>Preparing Order</p>
+            <p style={style}>
+              {deliveredIn > 0 ? "Preparing Order" : "Order Delivered"}
+            </p>
           </div>
           <div>
             {deliveredIn >= 0 ? (
               <p>
-                Only {deliveredIn} {deliveredIn > 1 ? "minutes" : "minute"} left
+                Only {deliveredIn} {deliveredIn > 1 ? "minutes " : "minute "}
+                left, {customer}
               </p>
             ) : (
               <p>Pizza arrived</p>
             )}
-            <p>Estimated delivery: 5:06PM</p>
+            <p>Estimated delivery: {formatDate(estimatedDelivery)}</p>
           </div>
-          <div className={styles.pizzas}>
-            <div>
-              <div>
-                <p>10x</p>
-                <p>Pizza Name</p>
-              </div>
-              <p>$19.99</p>
-            </div>
-            <div>
-              <div>
-                <p>10x</p>
-                <p>Pizza Name</p>
-              </div>
-              <p>$19.99</p>
-            </div>
+          <div className={styles.pizzas} style={style}>
+            {cart &&
+              cart.map((obj) => (
+                <div key={obj.pizzaId}>
+                  <div>
+                    <p>{obj.quantity}x</p>
+                    <p>{obj.name}</p>
+                  </div>
+                  <p>{formatTotal(obj.totalPrice)}</p>
+                </div>
+              ))}
           </div>
-          <p>total: $9.99</p>
+          <p>
+            total:{" "}
+            {formatTotal(cart.reduce((acc, curr) => acc + curr.totalPrice, 0))}
+          </p>
         </div>
       </div>
     </div>
