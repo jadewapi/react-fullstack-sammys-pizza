@@ -5,16 +5,24 @@ import { useSelector } from "react-redux";
 import { getName } from "./userSlice";
 import { getCart } from "../cart/cartSlice";
 import { useEffect, useRef } from "react";
+import { createOrder, getOrder } from "../../services/apiRestaurant";
 
 function Order() {
   const focus = useRef();
   const navigate = useNavigate();
   const name = useSelector(getName());
   const cart = useSelector(getCart());
-  // if (cart.length === 0)
-  //   alert(
-  //     "You cant order because you haven order dummy! 🤣 Click the button to see the menu"
-  //   );
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const object = {
+      address: "sdfsdfdsf",
+      cart: cart,
+      customer: "sdfdsfsdf",
+      phone: "3232323",
+    };
+    const order = await createOrder(object);
+    navigate(`/order/${order.id}`);
+  }
   useEffect(function () {
     focus.current.focus();
   }, []);
@@ -29,7 +37,7 @@ function Order() {
         <div>
           <p onClick={() => navigate(-1)}>Back to menu.</p>
           <p>One more step...</p>
-          <form onSubmit={() => navigate("/order/:id")}>
+          <form onSubmit={(e) => handleSubmit(e)}>
             <div>
               <p>First name:</p>
               <input
