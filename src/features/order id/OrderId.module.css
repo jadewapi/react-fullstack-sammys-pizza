@@ -2,7 +2,6 @@
   height: 75.5rem;
   background-color: var(--yellow);
   min-width: 442px;
-  max-height: 75.5rem;
   user-select: text;
 }
 
@@ -138,8 +137,8 @@
   }
 }
 
-@media (height > 782px) {
+@media (height > 800px) {
   .container {
-    height: 100vh;
+    height: 98vh;
   }
 }

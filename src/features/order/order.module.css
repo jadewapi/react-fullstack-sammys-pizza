@@ -102,8 +102,9 @@
   border-bottom: 10px solid black;
 }
 
-@media (height > 771px) {
-  .orderNew {
-    height: 100vh;
+@media (height > 800px) {
+  .container {
+    height: 90vh;
+    background-color: var(--white);
   }
 }
